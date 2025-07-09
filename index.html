@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
+<style>
+  body {
+    -webkit-user-select: none; /* لمنع التحديد في كروم وسفاري */
+    -moz-user-select: none;    /* لمنع التحديد في فايرفوكس */
+    -ms-user-select: none;     /* لمنع التحديد في إنترنت إكسبلورر/Edge */
+    user-select: none;         /* لمنع التحديد في باقي المتصفحات */
+  }
+</style>
+
   <meta charset="UTF-8">
   <title>افتح الرابط</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -336,6 +346,18 @@ const step3StorageKey = "step3State_ff_v25_page2123"; // اسم جديد
       }, 2000);
     });
   }
+
+// منع الضغط بزر الفأرة الأيمن
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+// منع اختصارات النسخ Ctrl+C، Ctrl+X، Ctrl+U، Ctrl+S
+document.addEventListener("keydown", function(e) {
+  if ((e.ctrlKey && ["c", "x", "u", "s", "a"].includes(e.key.toLowerCase())) || e.key === "F12") {
+    e.preventDefault();
+  }
+});
+
+
 </script>
 
 </body>
